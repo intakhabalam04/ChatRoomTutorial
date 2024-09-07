@@ -12,11 +12,7 @@ public class MessageController {
     @MessageMapping("/message")
     @SendTo("/topic/return-to")
     public Message getContent(@RequestBody Message message) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
         return message;
     }
 }
