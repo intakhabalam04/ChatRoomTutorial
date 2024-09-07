@@ -12,7 +12,9 @@ public class MessageConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/server1").withSockJS();
+        registry.addEndpoint("/server1").
+        setAllowedOrigins("https://chatroomtutorial-production.up.railway.app/").
+        withSockJS();
     }
 
     @Override
@@ -20,4 +22,6 @@ public class MessageConfig implements WebSocketMessageBrokerConfigurer {
         registry.enableSimpleBroker("/topic");
         registry.setApplicationDestinationPrefixes("/app");
     }
+
+
 }
