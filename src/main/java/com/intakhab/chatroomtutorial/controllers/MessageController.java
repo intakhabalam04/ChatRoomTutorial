@@ -9,10 +9,15 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 @RestController
 public class MessageController {
 
-    @MessageMapping("/message")
-    @SendTo("/topic/return-to")
+    @MessageMapping("/message/{otp}")
+    @SendTo("/topic/return-to/{otp}")
     public Message getContent(@RequestBody Message message) {
+        return message;
+    }
 
+    @MessageMapping("/user-joined/{otp}")
+    @SendTo("/topic/return-to/{otp}")
+    public Message userJoined(@RequestBody Message message) {
         return message;
     }
 }
